@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+cd "$(dirname "$0")"/..
+make -s
+cd build
+trap 'kill 0' SIGINT
+
+./tone 30 31 32 33 34 35 36 &
+./attack 80 9000 9000 &
+./brown &
+
+wait
+
